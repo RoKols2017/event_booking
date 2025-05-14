@@ -1,0 +1,12 @@
+<!-- templates/events/dashboard.html -->
+{% extends "base.html" %}
+{% block content %}
+<h2>Мои бронирования</h2>
+<ul>
+  {% for b in bookings %}
+    <li>{{ b.event.title }} — {{ b.booking_date }} — {{ b.confirmed|yesno:"Подтверждено,Отклонено" }}</li>
+  {% empty %}
+    <li>У вас пока нет бронирований.</li>
+  {% endfor %}
+</ul>
+{% endblock %}

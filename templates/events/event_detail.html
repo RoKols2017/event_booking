@@ -1,0 +1,12 @@
+<!-- templates/events/event_detail.html -->
+{% extends "base.html" %}
+{% block content %}
+<h2>{{ event.title }}</h2>
+<p>{{ event.description }}</p>
+<p>Дата: {{ event.date }}</p>
+<p>Место: {{ event.location }}</p>
+<p>Жанр: {{ event.genre }}</p>
+<p>Цена: {{ event.price }} ₽</p>
+<p>Свободно мест: {{ event.available_tickets }}</p>
+<a href="{% url 'book_event' event.pk %}">Забронировать</a>
+{% endblock %}

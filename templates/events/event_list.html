@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+{% block title %}Список мероприятий{% endblock %}
+{% block content %}
+<h1>Список мероприятий</h1>
+
+<form method="get" class="mb-3">
+  <div class="row">
+    <div class="col-md-3">{{ form.date.label }} {{ form.date }}</div>
+    <div class="col-md-3">{{ form.location.label }} {{ form.location }}</div>
+    <div class="col-md-3">{{ form.genre.label }} {{ form.genre }}</div>
+    <div class="col-md-3"><button class="btn btn-primary mt-4" type="submit">Фильтровать</button></div>
+  </div>
+</form>
+
+<div class="row">
+  {% for event in events %}
+    <div class="col-md-4 mb-4">
+      <div class="card">
+        <div class="card-body">
+          <h5 class="card-title">{{ event.title }}</h5>
+          <p class="card-text">{{ event.date }} | {{ event.location }}</p>
+          <p class="card-text"><strong>{{ event.price }} ₽</strong></p>
+          <a href="{% url 'event_detail' event.pk %}" class="btn btn-sm btn-outline-primary">Подробнее</a>
+        </div>
+      </div>
+    </div>
+  {% empty %}
+    <p>Нет мероприятий.</p>
+  {% endfor %}
+</div>
+{% endblock %}

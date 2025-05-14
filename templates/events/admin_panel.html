@@ -1,0 +1,37 @@
+{% extends "base.html" %}
+{% block title %}Административная панель{% endblock %}
+{% block content %}
+<h2 class="mb-4">Добавить новое мероприятие вручную</h2>
+<form method="post" enctype="multipart/form-data" class="mb-5">
+  {% csrf_token %}
+  <div class="row g-3">
+    {% for field in form %}
+      <div class="col-md-6">
+        <label class="form-label">{{ field.label }}</label>
+        {{ field }}
+        {% if field.errors %}
+          <div class="text-danger small">{{ field.errors }}</div>
+        {% endif %}
+      </div>
+    {% endfor %}
+    <div class="col-12">
+      <button name="manual_submit" type="submit" class="btn btn-success">Сохранить вручную</button>
+    </div>
+  </div>
+</form>
+
+<hr class="my-4">
+<h3>📥 Загрузить мероприятия из CSV</h3>
+<form method="post" enctype="multipart/form-data" class="mb-5">
+  {% csrf_token %}
+  <div class="row g-3">
+    <div class="col-md-6">
+      <input type="file" name="csv_file" accept=".csv" class="form-control" required>
+    </div>
+    <div class="col-md-6">
+      <button name="csv_submit" type="submit" class="btn btn-primary">Загрузить CSV</button>
+    </div>
+  </div>
+</form>
+
+{% endblock %}

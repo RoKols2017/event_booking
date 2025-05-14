@@ -1,0 +1,7 @@
+<!-- templates/events/booking_confirmation.html -->
+{% extends "base.html" %}
+{% block content %}
+<h2>Спасибо!</h2>
+<p>Ваше бронирование успешно оформлено. Подтверждение отправлено на почту.</p>
+<a href="{% url 'event_list' %}">Назад к мероприятиям</a>
+{% endblock %}

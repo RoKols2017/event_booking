@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+{% block title %}Профиль{% endblock %}
+{% block content %}
+<div class="container mt-4">
+  <h2>👤 Личный кабинет</h2>
+  <a href="{% url 'edit_profile' %}" class="btn btn-outline-warning mt-3">✏️ Редактировать профиль</a>
+  <hr>
+  <ul class="list-group">
+    <li class="list-group-item"><strong>Имя пользователя:</strong> {{ user.username }}</li>
+    <li class="list-group-item"><strong>Email:</strong> {{ user.email }}</li>
+    <li class="list-group-item"><strong>Телефон:</strong> {{ profile.phone|default:"не указан" }}</li>
+    <li class="list-group-item"><strong>Telegram ID:</strong> {{ profile.telegram_chat_id|default:"не привязан" }}</li>
+  </ul>
+  <a href="{% url 'event_list' %}" class="btn btn-outline-primary mt-3">← Назад к событиям</a>
+</div>
+{% endblock %}

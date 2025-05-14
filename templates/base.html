@@ -25,6 +25,9 @@
               <i class="bi bi-person"></i> {{ user.username }}
             </span>
           </li>
+          <li class="nav-item">
+            <a class="nav-link" href="{% url 'profile' %}">👤 Профиль</a>
+          </li>
           <li class="nav-item me-2">
             <a class="nav-link" href="{% url 'user_dashboard' %}">Личный кабинет</a>
           </li>
